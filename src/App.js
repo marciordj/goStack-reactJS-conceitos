@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './components/Header';
+
 import './App.css';
 
 function App() {
+  const [projects, setProjects] = useState(['Desenvolvimento App', 'Backend'])
+
+
+  function handleAddProject () {
+    setProjects([...projects, `Novo pojeto ${Date.now()}`])
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title='Homepage2' />
+      <ul>
+        {projects.map(project => <li key={project}>{project}</li>)}
+      </ul>
+
+      <button type='button' onClick={handleAddProject}>Add novo projeto</button>
     </div>
   );
 }
